@@ -82,7 +82,7 @@ extern oled ekran; //cpp deki tanıma referans verdik her yerde bellek oluşturm
 
 ### temel öğeler
 
-```cpp
+```
 ekran.sil()                         // (buffer temizle)
 ekran.yaz("metin", x, y)            //(string yaz)
 ekran.yaz(sayi, x, y)               // (int yaz)
@@ -93,7 +93,7 @@ ekran.bitmap_ciz(x, y, genislik, yukseklik, veri)
 
 ### mod sınıfı
 
-```cpp
+```
 ekran.mod.saat(x, y, ss, dk)        //(ss:dk formatinda)
 ekran.mod.saat(x, y, ss, dk, sn)    //(ss:dk:sn formatinda)
 ekran.mod.saat_orta(x, y, ss, dk)   //(orta boy)
@@ -105,7 +105,7 @@ ekran.mod.altSatira_ortali_yaz(...)
 
 ### geometri sınıfı
 
-```cpp
+```
 ekran.geometri.nokta_ciz(x, y)
 ekran.geometri.nokta_sil(x, y)
 ekran.geometri.yay_ciz(cx, cy, r, baslangic_aci, bitis_aci)
