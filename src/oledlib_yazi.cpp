@@ -2,7 +2,7 @@
 #include "avr/pgmspace.h"
 #include "fontlar.h"
 
-void oled::yaz_(uint8_t x, uint8_t y, const char *yazi, bool hizli_modd)
+void Oled::yaz_(uint8_t x, uint8_t y, const char *yazi, bool hizli_modd)
 {
     uint8_t uzunluk = strlen(yazi);
     hizalama_uygula(x, y, uzunluk);
@@ -108,20 +108,20 @@ void oled::yaz_(uint8_t x, uint8_t y, const char *yazi, bool hizli_modd)
     }
 }
 
-void oled::yaz(const String &str, uint8_t x, uint8_t y) { yaz_(x, y, (const char *)str.c_str()); }
-void oled::yaz(int sayi, uint8_t x, uint8_t y)
+void Oled::yaz(const String &str, uint8_t x, uint8_t y) { yaz_(x, y, (const char *)str.c_str()); }
+void Oled::yaz(int sayi, uint8_t x, uint8_t y)
 {
     char buf[12];
     itoa(sayi, buf, 10);
     yaz_(x, y, buf);
 }
-void oled::yaz(float sayi, uint8_t x, uint8_t y, uint8_t hassasiyet = 2)
+void Oled::yaz(float sayi, uint8_t x, uint8_t y, uint8_t hassasiyet = 2)
 {
     char buf[20];
     dtostrf(sayi, 0, hassasiyet, buf);
     yaz_(x, y, buf);
 }
-void oled::hizalama_uygula(uint8_t &x, uint8_t y, uint8_t metin_uzunlugu)
+void Oled::hizalama_uygula(uint8_t &x, uint8_t y, uint8_t metin_uzunlugu)
 {
     const uint8_t font_genislik = genislik;
     uint8_t toplam_genislik = metin_uzunlugu * font_genislik;
@@ -145,7 +145,7 @@ void oled::hizalama_uygula(uint8_t &x, uint8_t y, uint8_t metin_uzunlugu)
 }
 
 ///_________________________________mod___________________________________________
-void oled::mod::yaz(const char *k, int32_t a, uint8_t x, uint8_t y)
+void Oled::mod::yaz(const char *k, int32_t a, uint8_t x, uint8_t y)
 {
     char buf[32];
     char sayi[12]; 
@@ -164,16 +164,16 @@ void oled::mod::yaz(const char *k, int32_t a, uint8_t x, uint8_t y)
     buf[i] = '\0';
     mod_priv->yaz(buf, x, y);
 }
-void oled::mod::yaz(const String &k, int32_t a, uint8_t x, uint8_t y){yaz(k.c_str(), a, x, y);}
+void Oled::mod::yaz(const String &k, int32_t a, uint8_t x, uint8_t y){yaz(k.c_str(), a, x, y);}
 
-void oled::mod::yaz(char k, int32_t a, uint8_t x, uint8_t y)
+void Oled::mod::yaz(char k, int32_t a, uint8_t x, uint8_t y)
 {
     char buf[2] = {k, '\0'};
     yaz(buf, a, x, y);
 }
 
 ///_________________________________mod___________________________________________
-void oled::mod::altSatira_ortali_yaz(const char *k, int32_t a, uint8_t x, uint8_t y, bool buyuk)
+void Oled::mod::altSatira_ortali_yaz(const char *k, int32_t a, uint8_t x, uint8_t y, bool buyuk)
 {
     mod_priv->font.sec.yazi();
     mod_priv->yaz_(ORTA, y, k);
@@ -187,10 +187,10 @@ void oled::mod::altSatira_ortali_yaz(const char *k, int32_t a, uint8_t x, uint8_
     mod_priv->yaz_(ORTA, sayi_y, sayi_buf);
     mod_priv->font.sec.yazi();
 }
-void oled::mod::altSatira_ortali_yaz(const String &yazi, int32_t sayi, uint8_t x, uint8_t y, bool buyuk) { altSatira_ortali_yaz(yazi.c_str(), sayi, x, y, buyuk); }
+void Oled::mod::altSatira_ortali_yaz(const String &yazi, int32_t sayi, uint8_t x, uint8_t y, bool buyuk) { altSatira_ortali_yaz(yazi.c_str(), sayi, x, y, buyuk); }
 ///_________________________________mod___________________________________________
 
-void oled::mod::saat(uint8_t x, uint8_t y, uint8_t saat, uint8_t dk, uint8_t sn)
+void Oled::mod::saat(uint8_t x, uint8_t y, uint8_t saat, uint8_t dk, uint8_t sn)
 {
     char buf[16];
     if (sn == 254)
@@ -199,19 +199,19 @@ void oled::mod::saat(uint8_t x, uint8_t y, uint8_t saat, uint8_t dk, uint8_t sn)
         snprintf(buf, sizeof(buf), "%02d:%02d:%02d", saat, dk, sn);
     mod_priv->yaz_(x, y, buf);
 }
-void oled::mod::saat_orta(uint8_t x, uint8_t y, uint8_t saat, uint8_t dk, uint8_t sn)
+void Oled::mod::saat_orta(uint8_t x, uint8_t y, uint8_t saat, uint8_t dk, uint8_t sn)
 {
     mod_priv->font.sec.minikSayi();
     mod_priv->mod.saat(x, y, saat, dk, sn);
     mod_priv->font.sec.yazi();
 }
-void oled::mod::saat_buyuk(uint8_t x, uint8_t y, uint8_t saat, uint8_t dk, uint8_t sn)
+void Oled::mod::saat_buyuk(uint8_t x, uint8_t y, uint8_t saat, uint8_t dk, uint8_t sn)
 {
     mod_priv->font.sec.buyukSayi();
     mod_priv->mod.saat(x, y, saat, dk, sn);
     mod_priv->font.sec.yazi();
 }
-void oled::mod::tarih(uint8_t x, uint8_t y, uint8_t gun, uint8_t ay, uint16_t yil)
+void Oled::mod::tarih(uint8_t x, uint8_t y, uint8_t gun, uint8_t ay, uint16_t yil)
 {
     if (mod_priv->_font != genelFont)
         mod_priv->font.sec.yazi(); 
@@ -220,7 +220,7 @@ void oled::mod::tarih(uint8_t x, uint8_t y, uint8_t gun, uint8_t ay, uint16_t yi
     mod_priv->yaz_(x, y, buf); 
     mod_priv->font.sec.yazi(); 
 }
-void oled::mod::tarih(uint8_t x, uint8_t y, const char *haftaninGun, uint8_t gun, uint8_t ay, uint16_t yil, bool alta_yaz)
+void Oled::mod::tarih(uint8_t x, uint8_t y, const char *haftaninGun, uint8_t gun, uint8_t ay, uint16_t yil, bool alta_yaz)
 {
     if (mod_priv->_font != genelFont)
         mod_priv->font.sec.yazi(); 
@@ -244,7 +244,7 @@ void oled::mod::tarih(uint8_t x, uint8_t y, const char *haftaninGun, uint8_t gun
     mod_priv->font.sec.yazi(); // Fontu sıfırla
 }
 
-void oled::mod::tarih(uint8_t x, uint8_t y, const char *ay_isim, const char *haftaninGun, uint8_t gun, uint8_t ay, uint16_t yil, bool alta_yaz)
+void Oled::mod::tarih(uint8_t x, uint8_t y, const char *ay_isim, const char *haftaninGun, uint8_t gun, uint8_t ay, uint16_t yil, bool alta_yaz)
 {
     if (mod_priv->_font != genelFont)
         mod_priv->font.sec.yazi(); 

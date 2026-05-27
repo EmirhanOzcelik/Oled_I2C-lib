@@ -8,7 +8,7 @@ uint16_t imlec_satiri = 0;
 uint16_t imlecc = 0;
 uint16_t son_toplam_satir = 0;
 
-void oled::arkaplan::paragraf_goruntuleyici(const char *metin, uint8_t azaltici, uint8_t arttirici, uint8_t max_ekran_satiri)
+void Oled::arkaplan::paragraf_goruntuleyici(const char *metin, uint8_t azaltici, uint8_t arttirici, uint8_t max_ekran_satiri)
 {
     if (max_ekran_satiri > 7)
         return;
@@ -60,4 +60,4 @@ void oled::arkaplan::paragraf_goruntuleyici(const char *metin, uint8_t azaltici,
     arkaplan_priv->geometri.cerceve.ici_bos.dikdortgen_ciz(0, 0, toplam_gorunur_px, 6);
     arkaplan_priv->geometri.cerceve.ici_dolu.dikdortgen_ciz(0, imlec_y + IMLEC_OFFSET_Y, 10 - max_ekran_satiri, 6);
 }
-void oled::arkaplan::paragraf_goruntuleyici(const String &metin, uint8_t azaltici, uint8_t arttirici, uint8_t max_ekran_satiri) { paragraf_goruntuleyici(metin.c_str(), azaltici, arttirici, max_ekran_satiri); }
+void Oled::arkaplan::paragraf_goruntuleyici(const String &metin, uint8_t azaltici, uint8_t arttirici, uint8_t max_ekran_satiri) { paragraf_goruntuleyici(metin.c_str(), azaltici, arttirici, max_ekran_satiri); }

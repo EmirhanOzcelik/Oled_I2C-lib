@@ -1,0 +1,16 @@
+{
+  "name": "OLED_I2C",
+  "version": "1.0.0",
+  "description": "128x64 oled ekran yönetimi için gelişmiş sınıflar",
+  "keywords": ["oled", "display", "bitmap", "128x64", "library"],
+  "authors": [
+    {
+      "name": "emirhan özçelik",
+      "email": "emirhanozcelik339@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "frameworks": ["arduino"],
+  "platforms": ["atmelavr", "esp8266", "stm32"],
+  "headers": ["OLED_LIB.h"]
+}

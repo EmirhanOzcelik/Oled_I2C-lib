@@ -21,7 +21,7 @@
 
 ---
 
-- bu kütüphane şimdilik sadece 128x64 oled ekranlar içindir.
+- bu kütüphane şimdilik sadece 128x64 Oled ekranlar içindir.
 - uno nano ve nodemcu(esp8266) ile denenmiştir
 - bellek tüketimi ve işlemler optimizedir
 - çok dar projelerde bellek tasarrufu için sadece sil yaz güncelle fonksiyonları kullanılması önerilir
@@ -48,7 +48,7 @@
 
 ```c
 #include "OLED_LIB.h"
-oled ekran; //ekran adında nesne
+Oled ekran; //ekran adında nesne
 void setup(){
     ekran.kur(); // buffer başlatıldı bu işlem tekrarlı yapılmamalı bellek kaplar
 }
@@ -63,7 +63,7 @@ void loop(){
 
 ```h
 #pragma once
-extern oled ekran; //cpp deki tanıma referans verdik her yerde bellek oluşturmak projeyi çökertir
+extern Oled ekran; //cpp deki tanıma referans verdik her yerde bellek oluşturmak projeyi çökertir
 ```
 
 ---

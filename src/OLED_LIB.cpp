@@ -1,7 +1,7 @@
 #include "OLED_LIB.h"
 #include "__YAPI/ssd1306_.h"
 
-oled::oled(uint8_t ekran_x_, uint8_t ekran_y_)
+Oled::Oled(uint8_t ekran_x_, uint8_t ekran_y_)
 {
     __EKRAN_GENISLIK = ekran_x_;
     __EKRAN_YUKSEKLIK = ekran_y_;
@@ -26,14 +26,14 @@ oled::oled(uint8_t ekran_x_, uint8_t ekran_y_)
     buffer = new uint8_t[__SSD_PAKET_MAX]; 
     memset(buffer, 0, __SSD_PAKET_MAX);
 }
-oled::~oled()
+Oled::~Oled()
 {
     delete[] buffer;
 }
 
 /// @brief ekranı kurar genelde setupta çağırılır
 /// @return hep true döndürür false döndürmez
-bool oled::kur()
+bool Oled::kur()
 {
 #if defined(__AVR__)
     i2c_kur();
@@ -68,8 +68,8 @@ bool oled::kur()
     guncelle();
     return true;
 }
-void oled::sil() { memset(buffer, 0, __SSD_PAKET_MAX); }
-void oled::guncelle()
+void Oled::sil() { memset(buffer, 0, __SSD_PAKET_MAX); }
+void Oled::guncelle()
 {
     for (uint8_t sayfa = 0; sayfa < (__EKRAN_YUKSEKLIK / 8); sayfa++)
     {
@@ -79,7 +79,7 @@ void oled::guncelle()
         veri_gonder(&buffer[sayfa * __EKRAN_GENISLIK], __EKRAN_GENISLIK);
     }
 }
-inline void oled::komut_gonder(uint8_t cmd)
+inline void Oled::komut_gonder(uint8_t cmd)
 {
 #if defined(__AVR__)
     i2c_baslat();
@@ -94,7 +94,7 @@ inline void oled::komut_gonder(uint8_t cmd)
     Wire.endTransmission();
 #endif
 }
-inline void oled::veri_gonder(uint8_t *data, size_t len)
+inline void Oled::veri_gonder(uint8_t *data, size_t len)
 {
 #if defined(__AVR__)
     i2c_baslat();
@@ -118,17 +118,17 @@ inline void oled::veri_gonder(uint8_t *data, size_t len)
     }
 #endif
 }
-void oled::pixel_ac(uint8_t x, uint8_t y)
+void Oled::pixel_ac(uint8_t x, uint8_t y)
 {
     if (x < __EKRAN_GENISLIK && y < __EKRAN_YUKSEKLIK)
         buffer[((y) >> 3) * __EKRAN_GENISLIK + (x)] |= (1 << ((y) & 0x07));
 }
-void oled::pixel_kapa(uint8_t x, uint8_t y)
+void Oled::pixel_kapa(uint8_t x, uint8_t y)
 {
     if (x < __EKRAN_GENISLIK && y < __EKRAN_YUKSEKLIK)
         buffer[((y) >> 3) * __EKRAN_GENISLIK + (x)] &= ~(1 << ((y) & 0x07));
 }
-bool oled::pixel_kontrol(uint8_t x, uint8_t y)
+bool Oled::pixel_kontrol(uint8_t x, uint8_t y)
 {
     uint8_t *p = buffer + x + (y >> 3) * __EKRAN_GENISLIK;
     return (*p & (1 << (y & 7))) != 0;

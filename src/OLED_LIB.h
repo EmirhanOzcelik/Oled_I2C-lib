@@ -84,7 +84,7 @@
     *   ekran.ayarla.bitmap.donme_270()
     *   ekran.ayarla.bitmap.ayarlari_sifirla()
  */
-class oled
+class Oled
 {
 private: //_____________________________Ek sınıflar______________________________
     friend class ayarla;
@@ -97,15 +97,15 @@ private: //_____________________________Ek sınıflar___________________________
     class font
     {
     private:
-        oled *font_priv;
-        friend class oled;
+        Oled *font_priv;
+        friend class Oled;
 
     public:
         class sec
         {
         private:
-            oled *sec_font_priv;
-            friend class oled;
+            Oled *sec_font_priv;
+            friend class Oled;
 
         public:
             void yazi() { sec_font_priv->font_sec(0); }
@@ -116,8 +116,8 @@ private: //_____________________________Ek sınıflar___________________________
     class arkaplan
     {
     private:
-        friend class oled;
-        oled *arkaplan_priv;
+        friend class Oled;
+        Oled *arkaplan_priv;
 
     public:
         void paragraf_goruntuleyici(const char *metin, uint8_t azaltici, uint8_t arttirici, uint8_t max_ekran_satiri = 7);
@@ -126,8 +126,8 @@ private: //_____________________________Ek sınıflar___________________________
     class mod
     {
     private:
-        friend class oled;
-        oled *mod_priv;
+        friend class Oled;
+        Oled *mod_priv;
 
     public:
         void yaz(const char *k, int32_t a, uint8_t x, uint8_t y);
@@ -145,8 +145,8 @@ private: //_____________________________Ek sınıflar___________________________
     class ayarla
     {
     private:
-        friend class oled;
-        oled *ayar_priv;
+        friend class Oled;
+        Oled *ayar_priv;
 
     public:
         void arkaplan_siyah();
@@ -161,8 +161,8 @@ private: //_____________________________Ek sınıflar___________________________
         class bitmap
         {
         private:
-            friend class oled;
-            oled *ayar_bitmap_priv;
+            friend class Oled;
+            Oled *ayar_bitmap_priv;
             // Yazdırma modları
             const uint8_t OKUMA_YATAY = 0;
             const uint8_t OKUMA_DIKEY = 1;
@@ -201,8 +201,8 @@ private: //_____________________________Ek sınıflar___________________________
     class geometri
     {
     private:
-        friend class oled;
-        oled *geometri_priv;
+        friend class Oled;
+        Oled *geometri_priv;
 
     public:
         bool nokta_kontrol(uint8_t x, uint8_t y);
@@ -217,17 +217,17 @@ private: //_____________________________Ek sınıflar___________________________
         class cizgi
         {
         private:
-            friend class oled;
+            friend class Oled;
 
-            oled *cizgi_priv;
+            Oled *cizgi_priv;
 
         public:
             class sil
             {
             private:
-                friend class oled;
+                friend class Oled;
 
-                oled *sil_cizgi_priv;
+                Oled *sil_cizgi_priv;
 
             public:
                 void cizgi_(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t kalinlik = 1);
@@ -237,8 +237,8 @@ private: //_____________________________Ek sınıflar___________________________
             class ciz
             {
             private:
-                friend class oled;
-                oled *ciz_cizgi_priv;
+                friend class Oled;
+                Oled *ciz_cizgi_priv;
 
             public:
                 void cizgi_(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t kalinlik = 1);
@@ -250,17 +250,17 @@ private: //_____________________________Ek sınıflar___________________________
         class cerceve
         {
         private:
-            friend class oled;
+            friend class Oled;
 
-            oled *cerceve_priv;
+            Oled *cerceve_priv;
 
         public:
             class ici_dolu
             {
             private:
-                friend class oled;
+                friend class Oled;
 
-                oled *ici_dolu_priv;
+                Oled *ici_dolu_priv;
 
             public:
                 void dikdortgen_ciz(uint8_t x, uint8_t y, uint8_t h, uint8_t w);
@@ -278,9 +278,9 @@ private: //_____________________________Ek sınıflar___________________________
             class ici_bos
             {
             private:
-                friend class oled;
+                friend class Oled;
 
-                oled *ici_bos_priv;
+                Oled *ici_bos_priv;
 
             public:
                 void ucgen_ciz(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2);
@@ -297,14 +297,14 @@ private: //_____________________________Ek sınıflar___________________________
         } cerceve;
     };
 
-public: //________________________________oled main public___________________________
+public: //________________________________Oled main public___________________________
     ayarla ayarla;
     mod mod;
     geometri geometri;
     arkaplan arkaplan;
     font font;
-    oled(uint8_t ekran_x_ = 128, uint8_t ekran_y_ = 64);
-    ~oled();
+    Oled(uint8_t ekran_x_ = 128, uint8_t ekran_y_ = 64);
+    ~Oled();
     bool kur();
     void guncelle();
     void sil();
@@ -313,7 +313,7 @@ public: //________________________________oled main public______________________
     void yaz(float sayi, uint8_t x, uint8_t y, uint8_t hassasiyet);
     void bitmap_ciz(uint8_t x, uint8_t y, uint8_t genislik, uint8_t yukseklik, const uint8_t *veri);
 
-private: //____________________________oled main private_____________________________
+private: //____________________________Oled main private_____________________________
     uint8_t __EKRAN_YUKSEKLIK;
     uint8_t __EKRAN_GENISLIK;
     uint16_t __SSD_PAKET_MAX;

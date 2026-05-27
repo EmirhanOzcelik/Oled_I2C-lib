@@ -5,49 +5,49 @@
 #define fontbyte(x) pgm_read_byte(&cfont.font[x])
 #define bitmapbyte(x) pgm_read_byte(&bitmap[x])
 
-void oled::ayarla::arkaplan_siyah()
+void Oled::ayarla::arkaplan_siyah()
 {
     memset(ayar_priv->buffer, 0x00, ayar_priv->__SSD_PAKET_MAX);
     ayar_priv->guncelle();
 }
-void oled::ayarla::arkaplan_beyaz()
+void Oled::ayarla::arkaplan_beyaz()
 {
     memset(ayar_priv->buffer, 0xFF, ayar_priv->__SSD_PAKET_MAX);
     ayar_priv->guncelle();
 }
-void oled::ayarla::parlaklik(uint8_t deger)
+void Oled::ayarla::parlaklik(uint8_t deger)
 {
     ayar_priv->komut_gonder(__SSD_KONTRAST_AYARLA);
     ayar_priv->komut_gonder(deger);
     ayar_priv->guncelle();
 }
-void oled::ayarla::ekran_ac()
+void Oled::ayarla::ekran_ac()
 {
     ayar_priv->komut_gonder(__SSD_EKRAN_AC);
 }
-void oled::ayarla::ekran_kapa()
+void Oled::ayarla::ekran_kapa()
 {
     ayar_priv->komut_gonder(__SSD_EKRAN_KAPAT);
 }
-void oled::ayarla::ters_cevir()
+void Oled::ayarla::ters_cevir()
 {
     ayar_priv->komut_gonder(__SSD_SEGMENT_TERS);   
     ayar_priv->komut_gonder(__SSD_COM_TERS_TARAMA); 
 }
-void oled::ayarla::duze_cevir()
+void Oled::ayarla::duze_cevir()
 {
     ayar_priv->komut_gonder(__SSD_SEGMENT_NORMAL);    
     ayar_priv->komut_gonder(__SSD_COM_TARAMA_NORMAL); 
 }
-void oled::ayarla::renkleri_ters_cevir()
+void Oled::ayarla::renkleri_ters_cevir()
 {
     ayar_priv->komut_gonder(__SSD_EKRAN_INVERT_ACIK); 
 }
-void oled::ayarla::renkleri_normale_cevir()
+void Oled::ayarla::renkleri_normale_cevir()
 {
     ayar_priv->komut_gonder(__SSD_EKRAN_INVERT_KAPALI); 
 }
-void oled::font_sec(uint8_t num)
+void Oled::font_sec(uint8_t num)
 {
     switch (num)
     {
@@ -71,7 +71,7 @@ void oled::font_sec(uint8_t num)
 ///
 ///
 ///
-void oled::karakter_yaz(uint8_t x, uint8_t y, char ch, bool hizli_mod)
+void Oled::karakter_yaz(uint8_t x, uint8_t y, char ch, bool hizli_mod)
 {
     if (ch < ilk_karakter || ch >= ilk_karakter + karakter_sayisi)
         return;
@@ -98,7 +98,7 @@ void oled::karakter_yaz(uint8_t x, uint8_t y, char ch, bool hizli_mod)
         bitmap_ciz(x, y, yazilacak_genislik, yukseklik, &_font[index]);
 }
 
-void oled::bitmap_ciz(uint8_t x, uint8_t y, uint8_t genislik, uint8_t yukseklik, const uint8_t *veri)
+void Oled::bitmap_ciz(uint8_t x, uint8_t y, uint8_t genislik, uint8_t yukseklik, const uint8_t *veri)
 {
     uint8_t flipMod = ayarla.bitmap._flip_mod;
     uint8_t donmeMod = ayarla.bitmap._donme_mod;

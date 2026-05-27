@@ -6,10 +6,10 @@ inline void swap_(T &a, T &b)
     a = b;
     b = temp;
 }
-bool oled::geometri::nokta_kontrol(uint8_t x, uint8_t y) { return geometri_priv->pixel_kontrol(x, y); }
-void oled::geometri::nokta_ciz(uint8_t x, uint8_t y) { geometri_priv->pixel_ac(x, y); }
-void oled::geometri::nokta_sil(uint8_t x, uint8_t y) { geometri_priv->pixel_kapa(x, y); }
-void oled::geometri::cizgi::ciz::cizgi_(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t kalinlik)
+bool Oled::geometri::nokta_kontrol(uint8_t x, uint8_t y) { return geometri_priv->pixel_kontrol(x, y); }
+void Oled::geometri::nokta_ciz(uint8_t x, uint8_t y) { geometri_priv->pixel_ac(x, y); }
+void Oled::geometri::nokta_sil(uint8_t x, uint8_t y) { geometri_priv->pixel_kapa(x, y); }
+void Oled::geometri::cizgi::ciz::cizgi_(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t kalinlik)
 {
     int dx = abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
     int dy = -abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
@@ -46,7 +46,7 @@ void oled::geometri::cizgi::ciz::cizgi_(uint8_t x0, uint8_t y0, uint8_t x1, uint
         }
     }
 }
-void oled::geometri::cizgi::sil::cizgi_(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t kalinlik)
+void Oled::geometri::cizgi::sil::cizgi_(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t kalinlik)
 {
     int dx = abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
     int dy = -abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
@@ -84,7 +84,7 @@ void oled::geometri::cizgi::sil::cizgi_(uint8_t x0, uint8_t y0, uint8_t x1, uint
     }
 }
 
-void oled::geometri::cizgi::ciz::yatay(uint8_t x, uint8_t y, uint8_t uzunluk, uint8_t kalinlik)
+void Oled::geometri::cizgi::ciz::yatay(uint8_t x, uint8_t y, uint8_t uzunluk, uint8_t kalinlik)
 {
     if (y >= ciz_cizgi_priv->__EKRAN_YUKSEKLIK)
         return;
@@ -108,7 +108,7 @@ void oled::geometri::cizgi::ciz::yatay(uint8_t x, uint8_t y, uint8_t uzunluk, ui
         }
     }
 }
-void oled::geometri::cizgi::ciz::dikey(uint8_t x, uint8_t y, uint8_t uzunluk, uint8_t kalinlik)
+void Oled::geometri::cizgi::ciz::dikey(uint8_t x, uint8_t y, uint8_t uzunluk, uint8_t kalinlik)
 {
     if (x >= ciz_cizgi_priv->__EKRAN_GENISLIK || y >= ciz_cizgi_priv->__EKRAN_YUKSEKLIK)
         return;
@@ -125,7 +125,7 @@ void oled::geometri::cizgi::ciz::dikey(uint8_t x, uint8_t y, uint8_t uzunluk, ui
         }
     }
 }
-void oled::geometri::cizgi::sil::yatay(uint8_t x, uint8_t y, uint8_t uzunluk, uint8_t kalinlik)
+void Oled::geometri::cizgi::sil::yatay(uint8_t x, uint8_t y, uint8_t uzunluk, uint8_t kalinlik)
 {
     if (y >= sil_cizgi_priv->__EKRAN_YUKSEKLIK)
         return;
@@ -149,7 +149,7 @@ void oled::geometri::cizgi::sil::yatay(uint8_t x, uint8_t y, uint8_t uzunluk, ui
         }
     }
 }
-void oled::geometri::cizgi::sil::dikey(uint8_t x, uint8_t y, uint8_t uzunluk, uint8_t kalinlik)
+void Oled::geometri::cizgi::sil::dikey(uint8_t x, uint8_t y, uint8_t uzunluk, uint8_t kalinlik)
 {
     if (x >= sil_cizgi_priv->__EKRAN_GENISLIK || y >= sil_cizgi_priv->__EKRAN_YUKSEKLIK)
         return;
@@ -166,7 +166,7 @@ void oled::geometri::cizgi::sil::dikey(uint8_t x, uint8_t y, uint8_t uzunluk, ui
         }
     }
 }
-void oled::geometri::cerceve::ici_bos::dikdortgen_ciz(uint8_t x, uint8_t y, uint8_t h, uint8_t w, uint8_t kalinlik)
+void Oled::geometri::cerceve::ici_bos::dikdortgen_ciz(uint8_t x, uint8_t y, uint8_t h, uint8_t w, uint8_t kalinlik)
 {
     // Yatay kenarlar (üst ve alt)
     for (uint8_t i = 0; i < kalinlik; i++)
@@ -220,7 +220,7 @@ void oled::geometri::cerceve::ici_bos::dikdortgen_ciz(uint8_t x, uint8_t y, uint
         }
     }
 }
-void oled::geometri::cerceve::ici_bos::dikdortgen_sil(uint8_t x, uint8_t y, uint8_t h, uint8_t w, uint8_t kalinlik)
+void Oled::geometri::cerceve::ici_bos::dikdortgen_sil(uint8_t x, uint8_t y, uint8_t h, uint8_t w, uint8_t kalinlik)
 {
     // Yatay kenarlar (üst ve alt)
     for (uint8_t i = 0; i < kalinlik; i++)
@@ -274,7 +274,7 @@ void oled::geometri::cerceve::ici_bos::dikdortgen_sil(uint8_t x, uint8_t y, uint
         }
     }
 }
-void oled::geometri::cerceve::ici_dolu::dikdortgen_ciz(uint8_t x, uint8_t y, uint8_t h, uint8_t w)
+void Oled::geometri::cerceve::ici_dolu::dikdortgen_ciz(uint8_t x, uint8_t y, uint8_t h, uint8_t w)
 {
     if (x >= ici_dolu_priv->__EKRAN_GENISLIK || y >= ici_dolu_priv->__EKRAN_YUKSEKLIK)
         return;
@@ -294,7 +294,7 @@ void oled::geometri::cerceve::ici_dolu::dikdortgen_ciz(uint8_t x, uint8_t y, uin
         }
     }
 }
-void oled::geometri::cerceve::ici_dolu::dikdortgen_sil(uint8_t x, uint8_t y, uint8_t h, uint8_t w)
+void Oled::geometri::cerceve::ici_dolu::dikdortgen_sil(uint8_t x, uint8_t y, uint8_t h, uint8_t w)
 {
     if (x >= ici_dolu_priv->__EKRAN_GENISLIK || y >= ici_dolu_priv->__EKRAN_YUKSEKLIK)
         return;
@@ -314,7 +314,7 @@ void oled::geometri::cerceve::ici_dolu::dikdortgen_sil(uint8_t x, uint8_t y, uin
         }
     }
 }
-void oled::geometri::cerceve::ici_bos::ucgen_ciz(uint8_t x0, uint8_t y0,
+void Oled::geometri::cerceve::ici_bos::ucgen_ciz(uint8_t x0, uint8_t y0,
                                                  uint8_t x1, uint8_t y1,
                                                  uint8_t x2, uint8_t y2)
 {
@@ -322,7 +322,7 @@ void oled::geometri::cerceve::ici_bos::ucgen_ciz(uint8_t x0, uint8_t y0,
     ici_bos_priv->geometri.cizgi.ciz.cizgi_(x1, y1, x2, y2);
     ici_bos_priv->geometri.cizgi.ciz.cizgi_(x2, y2, x0, y0);
 }
-void oled::geometri::cerceve::ici_bos::ucgen_sil(uint8_t x0, uint8_t y0,
+void Oled::geometri::cerceve::ici_bos::ucgen_sil(uint8_t x0, uint8_t y0,
                                                  uint8_t x1, uint8_t y1,
                                                  uint8_t x2, uint8_t y2)
 {
@@ -330,7 +330,7 @@ void oled::geometri::cerceve::ici_bos::ucgen_sil(uint8_t x0, uint8_t y0,
     ici_bos_priv->geometri.cizgi.sil.cizgi_(x1, y1, x2, y2);
     ici_bos_priv->geometri.cizgi.sil.cizgi_(x2, y2, x0, y0);
 }
-void oled::geometri::cerceve::ici_dolu::ucgen_ciz(uint8_t x0, uint8_t y0,
+void Oled::geometri::cerceve::ici_dolu::ucgen_ciz(uint8_t x0, uint8_t y0,
                                                   uint8_t x1, uint8_t y1,
                                                   uint8_t x2, uint8_t y2)
 {
@@ -374,7 +374,7 @@ void oled::geometri::cerceve::ici_dolu::ucgen_ciz(uint8_t x0, uint8_t y0,
         draw_scanline(y, xa, xb);
     }
 }
-void oled::geometri::cerceve::ici_dolu::ucgen_sil(uint8_t x0, uint8_t y0,
+void Oled::geometri::cerceve::ici_dolu::ucgen_sil(uint8_t x0, uint8_t y0,
                                                   uint8_t x1, uint8_t y1,
                                                   uint8_t x2, uint8_t y2)
 {
@@ -418,7 +418,7 @@ void oled::geometri::cerceve::ici_dolu::ucgen_sil(uint8_t x0, uint8_t y0,
         draw_scanline(y, xa, xb);
     }
 }
-void oled::geometri::cerceve::ici_bos::cember_ciz(uint8_t merkez_x, uint8_t merkez_y, uint8_t r, uint8_t kalinlik)
+void Oled::geometri::cerceve::ici_bos::cember_ciz(uint8_t merkez_x, uint8_t merkez_y, uint8_t r, uint8_t kalinlik)
 {
     for (int radius = r; radius > (int)r - kalinlik && radius > 0; radius--)
     {
@@ -451,7 +451,7 @@ void oled::geometri::cerceve::ici_bos::cember_ciz(uint8_t merkez_x, uint8_t merk
     }
 }
 
-void oled::geometri::cerceve::ici_bos::cember_sil(uint8_t merkez_x, uint8_t merkez_y, uint8_t r, uint8_t kalinlik)
+void Oled::geometri::cerceve::ici_bos::cember_sil(uint8_t merkez_x, uint8_t merkez_y, uint8_t r, uint8_t kalinlik)
 {
     for (int radius = r; radius > (int)r - kalinlik && radius > 0; radius--)
     {
@@ -483,7 +483,7 @@ void oled::geometri::cerceve::ici_bos::cember_sil(uint8_t merkez_x, uint8_t merk
         }
     }
 }
-void oled::geometri::cerceve::ici_dolu::cember_ciz(uint8_t merkez_x, uint8_t merkez_y, uint8_t r)
+void Oled::geometri::cerceve::ici_dolu::cember_ciz(uint8_t merkez_x, uint8_t merkez_y, uint8_t r)
 {
     int x = r;
     int y = 0;
@@ -515,7 +515,7 @@ void oled::geometri::cerceve::ici_dolu::cember_ciz(uint8_t merkez_x, uint8_t mer
         }
     }
 }
-void oled::geometri::cerceve::ici_dolu::cember_sil(uint8_t merkez_x, uint8_t merkez_y, uint8_t r)
+void Oled::geometri::cerceve::ici_dolu::cember_sil(uint8_t merkez_x, uint8_t merkez_y, uint8_t r)
 {
     int x = r;
     int y = 0;
@@ -547,7 +547,7 @@ void oled::geometri::cerceve::ici_dolu::cember_sil(uint8_t merkez_x, uint8_t mer
         }
     }
 }
-void oled::geometri::cerceve::ici_bos::elips_ciz(int cx, int cy, int a, int b, uint8_t kalinlik)
+void Oled::geometri::cerceve::ici_bos::elips_ciz(int cx, int cy, int a, int b, uint8_t kalinlik)
 {
     for (int radius = 0; radius < kalinlik; radius++)
     {
@@ -598,7 +598,7 @@ void oled::geometri::cerceve::ici_bos::elips_ciz(int cx, int cy, int a, int b, u
         }
     }
 }
-void oled::geometri::cerceve::ici_bos::elips_sil(int cx, int cy, int a, int b, uint8_t kalinlik)
+void Oled::geometri::cerceve::ici_bos::elips_sil(int cx, int cy, int a, int b, uint8_t kalinlik)
 {
     for (int radius = 0; radius < kalinlik; radius++)
     {
@@ -649,7 +649,7 @@ void oled::geometri::cerceve::ici_bos::elips_sil(int cx, int cy, int a, int b, u
         }
     }
 }
-void oled::geometri::cerceve::ici_dolu::elips_ciz(int cx, int cy, int a, int b)
+void Oled::geometri::cerceve::ici_dolu::elips_ciz(int cx, int cy, int a, int b)
 {
     int a2 = a * a;
     int b2 = b * b;
@@ -697,7 +697,7 @@ void oled::geometri::cerceve::ici_dolu::elips_ciz(int cx, int cy, int a, int b)
         y++;
     }
 }
-void oled::geometri::cerceve::ici_dolu::elips_sil(int cx, int cy, int a, int b)
+void Oled::geometri::cerceve::ici_dolu::elips_sil(int cx, int cy, int a, int b)
 {
     int a2 = a * a;
     int b2 = b * b;
@@ -745,7 +745,7 @@ void oled::geometri::cerceve::ici_dolu::elips_sil(int cx, int cy, int a, int b)
         y++;
     }
 }
-void oled::geometri::cerceve::ici_bos::daire_dilimi_ciz(
+void Oled::geometri::cerceve::ici_bos::daire_dilimi_ciz(
     int cx, int cy, int r, float start_angle_deg, float end_angle_deg, uint8_t kalinlik)
 {
     // Dereceyi radyana çevir
@@ -764,7 +764,7 @@ void oled::geometri::cerceve::ici_bos::daire_dilimi_ciz(
         }
     }
 }
-void oled::geometri::cerceve::ici_bos::daire_dilimi_sil(
+void Oled::geometri::cerceve::ici_bos::daire_dilimi_sil(
     int cx, int cy, int r, float start_angle_deg, float end_angle_deg, uint8_t kalinlik)
 {
     float start_rad = start_angle_deg * 3.14159265f / 180.0f;
@@ -780,7 +780,7 @@ void oled::geometri::cerceve::ici_bos::daire_dilimi_sil(
         }
     }
 }
-void oled::geometri::cerceve::ici_dolu::daire_dilimi_ciz(
+void Oled::geometri::cerceve::ici_dolu::daire_dilimi_ciz(
     int cx, int cy, int r, float start_angle_deg, float end_angle_deg)
 {
     float start_rad = start_angle_deg * 3.14159265f / 180.0f;
@@ -800,7 +800,7 @@ void oled::geometri::cerceve::ici_dolu::daire_dilimi_ciz(
         }
     }
 }
-void oled::geometri::cerceve::ici_dolu::daire_dilimi_sil(
+void Oled::geometri::cerceve::ici_dolu::daire_dilimi_sil(
     int cx, int cy, int r, float start_angle_deg, float end_angle_deg)
 {
     float start_rad = start_angle_deg * 3.14159265f / 180.0f;
@@ -819,7 +819,7 @@ void oled::geometri::cerceve::ici_dolu::daire_dilimi_sil(
         }
     }
 }
-void oled::geometri::yay_ciz(int cx, int cy, int r, float start_angle_deg, float end_angle_deg, uint8_t kalinlik)
+void Oled::geometri::yay_ciz(int cx, int cy, int r, float start_angle_deg, float end_angle_deg, uint8_t kalinlik)
 {
     float start_rad = start_angle_deg * 3.14159265f / 180.0f;
     float end_rad = end_angle_deg * 3.14159265f / 180.0f;
@@ -834,7 +834,7 @@ void oled::geometri::yay_ciz(int cx, int cy, int r, float start_angle_deg, float
         }
     }
 }
-void oled::geometri::yay_sil(int cx, int cy, int r, float start_angle_deg, float end_angle_deg, uint8_t kalinlik)
+void Oled::geometri::yay_sil(int cx, int cy, int r, float start_angle_deg, float end_angle_deg, uint8_t kalinlik)
 {
     float start_rad = start_angle_deg * 3.14159265f / 180.0f;
     float end_rad = end_angle_deg * 3.14159265f / 180.0f;
@@ -849,7 +849,7 @@ void oled::geometri::yay_sil(int cx, int cy, int r, float start_angle_deg, float
         }
     }
 }
-void oled::geometri::yatay_aynala(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
+void Oled::geometri::yatay_aynala(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
 {
     if (x1 < x0)
     {
@@ -887,7 +887,7 @@ void oled::geometri::yatay_aynala(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1
         }
     }
 }
-void oled::geometri::dikey_aynala(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
+void Oled::geometri::dikey_aynala(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
 {
     if (x1 < x0)
     {
@@ -925,7 +925,7 @@ void oled::geometri::dikey_aynala(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1
         }
     }
 }
-void oled::geometri::dogrusal_egim_ciz(int x0, int y0, float m, int uzunluk, uint8_t kalinlik)
+void Oled::geometri::dogrusal_egim_ciz(int x0, int y0, float m, int uzunluk, uint8_t kalinlik)
 {
     float b = y0 - m * x0;
 
@@ -944,7 +944,7 @@ void oled::geometri::dogrusal_egim_ciz(int x0, int y0, float m, int uzunluk, uin
     }
 }
 
-void oled::geometri::dogrusal_egim_sil(int x0, int y0, float m, int uzunluk, uint8_t kalinlik)
+void Oled::geometri::dogrusal_egim_sil(int x0, int y0, float m, int uzunluk, uint8_t kalinlik)
 {
     float b = y0 - m * x0;
 
