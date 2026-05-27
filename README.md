@@ -82,9 +82,9 @@ extern oled ekran; //cpp deki tanıma referans verdik her yerde bellek oluşturm
 
 ### temel öğeler
 
-```
+```c
 ekran.sil()                         // (buffer temizle)
-ekran.yaz("metin", x, y)            //(string yaz)
+ekran.yaz("metin", x, y)            // (string yaz)
 ekran.yaz(sayi, x, y)               // (int yaz)
 ekran.yaz(sayi, x, y, hassasiyet)   // (float yaz)
 ekran.guncelle()                    // (buffer ekrana gonder, en son cagir)
@@ -93,7 +93,7 @@ ekran.bitmap_ciz(x, y, genislik, yukseklik, veri)
 
 ### mod sınıfı
 
-```
+```c
 ekran.mod.saat(x, y, ss, dk)        //(ss:dk formatinda)
 ekran.mod.saat(x, y, ss, dk, sn)    //(ss:dk:sn formatinda)
 ekran.mod.saat_orta(x, y, ss, dk)   //(orta boy)
@@ -105,7 +105,7 @@ ekran.mod.altSatira_ortali_yaz(...)
 
 ### geometri sınıfı
 
-```
+```c
 ekran.geometri.nokta_ciz(x, y)
 ekran.geometri.nokta_sil(x, y)
 ekran.geometri.yay_ciz(cx, cy, r, baslangic_aci, bitis_aci)
@@ -125,13 +125,13 @@ ekran.geometri.cerceve.ici_bos.elips_ciz(cx, cy, a, b, kalinlik)
 
 ### arkaplan sınıfı
 
-```cpp
+```c
 ekran.arkaplan.paragraf_goruntuleyici(metin, azaltici, artirici) // uzun metin için kaydırmalı ekran oluşturur azaltici ve artirici değerleri için buton vs koyabilirsiniz
 ```
 
 ### Font sınıfı
 
-```cpp
+```c
 ekran.font.sec.yazi()       //(standart yazi fontu)
 ekran.font.sec.minikSayi()  //(kucuk sayi fontu)
 ekran.font.sec.buyukSayi()  //(buyuk sayi fontu)
@@ -139,7 +139,7 @@ ekran.font.sec.buyukSayi()  //(buyuk sayi fontu)
 
 ### ayarlar sınıfı
 
-```cpp
+```c
 ekran.ayarla.ekran_ac()
 ekran.ayarla.ekran_kapa()
 ekran.ayarla.ters_cevir()           //(ekrani 180 derece cevir)
@@ -149,7 +149,7 @@ ekran.ayarla.renkleri_normale_cevir()
 
 ### Bitmap sınıfı
 
-```cpp
+```c
 ekran.ayarla.bitmap.okuma_mod_yatay()
 ekran.ayarla.bitmap.okuma_mod_dikey()
 ekran.ayarla.bitmap.aynalama_x()
