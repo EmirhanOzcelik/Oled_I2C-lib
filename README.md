@@ -6,6 +6,15 @@
 - [işlevler](#işlevler)
 - [Kullanım](#kullanım)
 - [kod-blokları](#kod-blokları)
+    - [setup](#setup)
+    - [temel](#temel-öğeler)
+    - [mod sınıfı](#mod-sınıfı)
+    - [geometri sınıfı](#geometri-sınıfı)
+    - [arkaplan sınıfı](#arkaplan-sınıfı)
+    - [font sınıfı](#font-sınıfı)
+    - [ayarlar sınıfı](#ayarlar-sınıfı)
+    - [bitmap sınıfı](#bitmap-sınıfı)
+
 
 ---
 
@@ -64,32 +73,40 @@ extern oled ekran; //cpp deki tanıma referans verdik her yerde bellek oluşturm
 
 ---
 
+### setup
+
 ```cpp
-// Tek Seferlik
 
- ekran.kur() (I2C baslat, buffer olustur)
+ ekran.kur() // (I2C baslat, buffer olustur)
 
+```
 
-// temel
+### temel öğeler
 
-ekran.sil() (buffer temizle)
-ekran.yaz("metin", x, y) (string yaz)
-ekran.yaz(sayi, x, y) (int yaz)
-ekran.yaz(sayi, x, y, hassasiyet) (float yaz)
-ekran.guncelle() (buffer ekrana gonder, en son cagir)
+```cpp
+ekran.sil() // (buffer temizle)
+ekran.yaz("metin", x, y) //(string yaz)
+ekran.yaz(sayi, x, y) // (int yaz)
+ekran.yaz(sayi, x, y, hassasiyet) // (float yaz)
+ekran.guncelle() // (buffer ekrana gonder, en son cagir)
 ekran.bitmap_ciz(x, y, genislik, yukseklik, veri)
-// mod sınıfı
+```
 
-ekran.mod.saat(x, y, ss, dk) (ss:dk formatinda)
-ekran.mod.saat(x, y, ss, dk, sn) (ss:dk:sn formatinda)
-ekran.mod.saat_orta(x, y, ss, dk) (orta boy)
-ekran.mod.saat_buyuk(x, y, ss, dk) (buyuk boy)
+### mod sınıfı
+
+```cpp
+ekran.mod.saat(x, y, ss, dk) //(ss:dk formatinda)
+ekran.mod.saat(x, y, ss, dk, sn) //(ss:dk:sn formatinda)
+ekran.mod.saat_orta(x, y, ss, dk) //(orta boy)
+ekran.mod.saat_buyuk(x, y, ss, dk) //(buyuk boy)
 ekran.mod.tarih(x, y, gun, ay, yil)
-ekran.mod.yaz("metin", sayi, x, y) (yazi + sayi beraber)
+ekran.mod.yaz("metin", sayi, x, y) //(yazi + sayi beraber)
 ekran.mod.altSatira_ortali_yaz(...)
+```
 
-// geometri sınıfı
+### geometri sınıfı
 
+```cpp
 ekran.geometri.nokta_ciz(x, y)
 ekran.geometri.nokta_sil(x, y)
 ekran.geometri.yay_ciz(cx, cy, r, baslangic_aci, bitis_aci)
@@ -105,28 +122,35 @@ ekran.geometri.cerceve.ici_dolu.elips_ciz(cx, cy, a, b)
 ekran.geometri.cerceve.ici_bos.dikdortgen_ciz(x, y, h, w, kalinlik)
 ekran.geometri.cerceve.ici_bos.cember_ciz(mx, my, r, kalinlik)
 ekran.geometri.cerceve.ici_bos.elips_ciz(cx, cy, a, b, kalinlik)
+```
 
-// arkaplan sınıfı
+### arkaplan sınıfı
 
+```cpp
 ekran.arkaplan.paragraf_goruntuleyici(metin, azalt, artir)
+```
 
+### Font sınıfı
 
-// Font Secimi
+```cpp
+ekran.font.sec.yazi() //(standart yazi fontu)
+ekran.font.sec.minikSayi() //(kucuk sayi fontu)
+ekran.font.sec.buyukSayi() //(buyuk sayi fontu)
+```
 
-ekran.font.sec.yazi() (standart yazi fontu)
-ekran.font.sec.minikSayi() (kucuk sayi fontu)
-ekran.font.sec.buyukSayi() (buyuk sayi fontu)
+### ayarlar sınıfı
 
-// Ekran Kontrol
-
+```cpp
 ekran.ayarla.ekran_ac()
 ekran.ayarla.ekran_kapa()
-ekran.ayarla.ters_cevir() (ekrani 180 derece cevir)
-ekran.ayarla.renkleri_ters_cevir() (negatif mod)
+ekran.ayarla.ters_cevir() //(ekrani 180 derece cevir)
+ekran.ayarla.renkleri_ters_cevir() //(negatif mod)
 ekran.ayarla.renkleri_normale_cevir()
+```
 
-// Bitmap Ayarlari
+### Bitmap sınıfı
 
+```cpp
 ekran.ayarla.bitmap.okuma_mod_yatay()
 ekran.ayarla.bitmap.okuma_mod_dikey()
 ekran.ayarla.bitmap.aynalama_x()
