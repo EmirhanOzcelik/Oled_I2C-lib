@@ -4,6 +4,7 @@
 
 - [açıklamalar](#açıklamalar)
 - [işlevler](#işlevler)
+- [Kullanım](#kullanım)
 - [kod-blokları](#kod-blokları)
 
 ---
@@ -29,6 +30,12 @@
 - hazır ekran stilleri, hazır uygulamalar
 - modlu yazım şekilleri ile hızlı gruplama
 
+---
+
+## Kullanım
+---
+- zip indirip proje klasörüne ekleyin `OLED_LIB.h` dosyasını import edin
+- 
 ---
 
 ## kod blokları
