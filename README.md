@@ -6,15 +6,14 @@
 - [işlevler](#işlevler)
 - [Kullanım](#kullanım)
 - [kod-blokları](#kod-blokları)
-    - [setup](#setup)
-    - [temel](#temel-öğeler)
-    - [mod sınıfı](#mod-sınıfı)
-    - [geometri sınıfı](#geometri-sınıfı)
-    - [arkaplan sınıfı](#arkaplan-sınıfı)
-    - [font sınıfı](#font-sınıfı)
-    - [ayarlar sınıfı](#ayarlar-sınıfı)
-    - [bitmap sınıfı](#bitmap-sınıfı)
-
+  - [setup](#setup)
+  - [temel](#temel-öğeler)
+  - [mod sınıfı](#mod-sınıfı)
+  - [geometri sınıfı](#geometri-sınıfı)
+  - [arkaplan sınıfı](#arkaplan-sınıfı)
+  - [font sınıfı](#font-sınıfı)
+  - [ayarlar sınıfı](#ayarlar-sınıfı)
+  - [bitmap sınıfı](#bitmap-sınıfı)
 
 ---
 
@@ -54,9 +53,9 @@ void setup(){
     ekran.kur(); // buffer başlatıldı bu işlem tekrarlı yapılmamalı bellek kaplar
 }
 void loop(){
-    ekran.sil(); //tamamen siler
-    ekran.yaz(millis(),ORTA,ORTA); // x ve y ekseninde ortalanmış şekilde millis değerini yaz
-    ekran.guncelle(); // ekranı günceller
+    ekran.sil();                    //tamamen siler
+    ekran.yaz(millis(),ORTA,ORTA);  // x ve y ekseninde ortalanmış şekilde millis değerini yaz
+    ekran.guncelle();               // ekranı günceller
 }
 ```
 
@@ -84,23 +83,23 @@ extern oled ekran; //cpp deki tanıma referans verdik her yerde bellek oluşturm
 ### temel öğeler
 
 ```cpp
-ekran.sil() // (buffer temizle)
-ekran.yaz("metin", x, y) //(string yaz)
-ekran.yaz(sayi, x, y) // (int yaz)
-ekran.yaz(sayi, x, y, hassasiyet) // (float yaz)
-ekran.guncelle() // (buffer ekrana gonder, en son cagir)
+ekran.sil()                         // (buffer temizle)
+ekran.yaz("metin", x, y)            //(string yaz)
+ekran.yaz(sayi, x, y)               // (int yaz)
+ekran.yaz(sayi, x, y, hassasiyet)   // (float yaz)
+ekran.guncelle()                    // (buffer ekrana gonder, en son cagir)
 ekran.bitmap_ciz(x, y, genislik, yukseklik, veri)
 ```
 
 ### mod sınıfı
 
 ```cpp
-ekran.mod.saat(x, y, ss, dk) //(ss:dk formatinda)
-ekran.mod.saat(x, y, ss, dk, sn) //(ss:dk:sn formatinda)
-ekran.mod.saat_orta(x, y, ss, dk) //(orta boy)
-ekran.mod.saat_buyuk(x, y, ss, dk) //(buyuk boy)
+ekran.mod.saat(x, y, ss, dk)        //(ss:dk formatinda)
+ekran.mod.saat(x, y, ss, dk, sn)    //(ss:dk:sn formatinda)
+ekran.mod.saat_orta(x, y, ss, dk)   //(orta boy)
+ekran.mod.saat_buyuk(x, y, ss, dk)  //(buyuk boy)
 ekran.mod.tarih(x, y, gun, ay, yil)
-ekran.mod.yaz("metin", sayi, x, y) //(yazi + sayi beraber)
+ekran.mod.yaz("metin", sayi, x, y)  //(yazi + sayi beraber)
 ekran.mod.altSatira_ortali_yaz(...)
 ```
 
@@ -127,15 +126,15 @@ ekran.geometri.cerceve.ici_bos.elips_ciz(cx, cy, a, b, kalinlik)
 ### arkaplan sınıfı
 
 ```cpp
-ekran.arkaplan.paragraf_goruntuleyici(metin, azalt, artir)
+ekran.arkaplan.paragraf_goruntuleyici(metin, azaltici, artirici) // uzun metin için kaydırmalı ekran oluşturur azaltici ve artirici değerleri için buton vs koyabilirsiniz
 ```
 
 ### Font sınıfı
 
 ```cpp
-ekran.font.sec.yazi() //(standart yazi fontu)
-ekran.font.sec.minikSayi() //(kucuk sayi fontu)
-ekran.font.sec.buyukSayi() //(buyuk sayi fontu)
+ekran.font.sec.yazi()       //(standart yazi fontu)
+ekran.font.sec.minikSayi()  //(kucuk sayi fontu)
+ekran.font.sec.buyukSayi()  //(buyuk sayi fontu)
 ```
 
 ### ayarlar sınıfı
@@ -143,8 +142,8 @@ ekran.font.sec.buyukSayi() //(buyuk sayi fontu)
 ```cpp
 ekran.ayarla.ekran_ac()
 ekran.ayarla.ekran_kapa()
-ekran.ayarla.ters_cevir() //(ekrani 180 derece cevir)
-ekran.ayarla.renkleri_ters_cevir() //(negatif mod)
+ekran.ayarla.ters_cevir()           //(ekrani 180 derece cevir)
+ekran.ayarla.renkleri_ters_cevir()  //(negatif mod)
 ekran.ayarla.renkleri_normale_cevir()
 ```
 
