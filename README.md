@@ -33,9 +33,30 @@
 ---
 
 ## Kullanım
+
 ---
-- zip indirip proje klasörüne ekleyin `OLED_LIB.h` dosyasını import edin
-- 
+
+- zip indirip veya projeyi remote ile çekip dosyayı proje klasörüne ekleyin. ardından `OLED_LIB.h` dosyasını import edip nesnenizi tek bir dosyadan oluşturun.
+
+```cpp
+#include "OLED_LIB.h"
+oled ekran; //ekran adında nesne
+void setup(){
+    ekran.kur(); // buffer başlatıldı bu işlem tekrarlı yapılmamalı bellek kaplar
+}
+void loop(){
+    ekran.sil(); //tamamen siler
+    ekran.yaz(millis(),ORTA,ORTA); // x ve y ekseninde ortalanmış şekilde millis değerini yaz
+    ekran.guncelle(); // ekranı günceller
+}
+```
+- h dosyalarında extern ile belirtmeli ve dış dosyalardan h dosyasındaki aracı ile bağlantı kurmanız gerekir
+
+```h
+#pragma once
+extern oled ekran; //cpp deki tanıma referans verdik her yerde bellek oluşturmak projeyi çökertir
+```
+
 ---
 
 ## kod blokları
