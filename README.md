@@ -46,7 +46,7 @@
 
 - zip indirip veya projeyi remote ile çekip dosyayı proje klasörüne ekleyin. ardından `OLED_LIB.h` dosyasını import edip nesnenizi tek bir dosyadan oluşturun.
 
-```cpp
+```c
 #include "OLED_LIB.h"
 oled ekran; //ekran adında nesne
 void setup(){
@@ -74,7 +74,7 @@ extern oled ekran; //cpp deki tanıma referans verdik her yerde bellek oluşturm
 
 ### setup
 
-```cpp
+```c
 
  ekran.kur() // (I2C baslat, buffer olustur)
 
@@ -83,12 +83,12 @@ extern oled ekran; //cpp deki tanıma referans verdik her yerde bellek oluşturm
 ### temel öğeler
 
 ```c
-ekran.sil()                         // (buffer temizle)
-ekran.yaz("metin", x, y)            // (string yaz)
-ekran.yaz(sayi, x, y)               // (int yaz)
-ekran.yaz(sayi, x, y, hassasiyet)   // (float yaz)
-ekran.guncelle()                    // (buffer ekrana gonder, en son cagir)
-ekran.bitmap_ciz(x, y, genislik, yukseklik, veri)
+ekran.sil()                                         // (buffer temizle)
+ekran.yaz("metin", x, y)                            // (string yaz)
+ekran.yaz(sayi, x, y)                               // (int yaz)
+ekran.yaz(sayi, x, y, hassasiyet)                   // (float yaz)
+ekran.guncelle()                                    // (buffer ekrana gonder, en son cagir)
+ekran.bitmap_ciz(x, y, genislik, yukseklik, veri)   // (bitmap çizdirme)
 ```
 
 ### mod sınıfı
@@ -98,9 +98,9 @@ ekran.mod.saat(x, y, ss, dk)        //(ss:dk formatinda)
 ekran.mod.saat(x, y, ss, dk, sn)    //(ss:dk:sn formatinda)
 ekran.mod.saat_orta(x, y, ss, dk)   //(orta boy)
 ekran.mod.saat_buyuk(x, y, ss, dk)  //(buyuk boy)
-ekran.mod.tarih(x, y, gun, ay, yil)
+ekran.mod.tarih(x, y, gun, ay, yil) //(tarihi yazar)
+ekran.mod.altSatira_ortali_yaz(...) //(tarihi geniş yazar)
 ekran.mod.yaz("metin", sayi, x, y)  //(yazi + sayi beraber)
-ekran.mod.altSatira_ortali_yaz(...)
 ```
 
 ### geometri sınıfı
@@ -140,25 +140,25 @@ ekran.font.sec.buyukSayi()  //(buyuk sayi fontu)
 ### ayarlar sınıfı
 
 ```c
-ekran.ayarla.ekran_ac()
+ekran.ayarla.ekran_ac()                 //  ekranı açıp kapama (güç tasarrufu)
 ekran.ayarla.ekran_kapa()
-ekran.ayarla.ters_cevir()           //(ekrani 180 derece cevir)
-ekran.ayarla.renkleri_ters_cevir()  //(negatif mod)
-ekran.ayarla.renkleri_normale_cevir()
+ekran.ayarla.ters_cevir()               //  ekrani 180 derece cevir
+ekran.ayarla.renkleri_ters_cevir()      //  yazı ve arkaplan rengi tersine döner
+ekran.ayarla.renkleri_normale_cevir()   //  renkler standarda döner
 ```
 
 ### Bitmap sınıfı
 
 ```c
-ekran.ayarla.bitmap.okuma_mod_yatay()
-ekran.ayarla.bitmap.okuma_mod_dikey()
-ekran.ayarla.bitmap.aynalama_x()
-ekran.ayarla.bitmap.aynalama_y()
-ekran.ayarla.bitmap.aynalama_xy()
-ekran.ayarla.bitmap.donme_90()
-ekran.ayarla.bitmap.donme_180()
-ekran.ayarla.bitmap.donme_270()
-ekran.ayarla.bitmap.ayarlari_sifirla()
+ekran.ayarla.bitmap.okuma_mod_yatay()   //  bitmap render seçeneği
+ekran.ayarla.bitmap.okuma_mod_dikey()   //  bitmap render seçeneği
+ekran.ayarla.bitmap.aynalama_x()        //  resmi x ekseninde aynalar
+ekran.ayarla.bitmap.aynalama_y()        //  resmi y ekseninde aynalar
+ekran.ayarla.bitmap.aynalama_xy()       //  resmi x ve y ye göre aynalar
+ekran.ayarla.bitmap.donme_90()          //  resmi 90' döndürür
+ekran.ayarla.bitmap.donme_180()         //  resmi 180' döndürür
+ekran.ayarla.bitmap.donme_270()         //  resmi 270' döndürür
+ekran.ayarla.bitmap.ayarlari_sifirla()  //  varsayılana geri döner
 ```
 
 ---
