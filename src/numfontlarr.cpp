@@ -1,6 +1,6 @@
-#include "avr/pgmspace.h"
+#include "fontlar.h"
 
-const uint8_t  orta_numara[] PROGMEM = {
+const uint8_t orta_numara[] PROGMEM = {
     // Font başlığı: genişlik, yükseklik, ilk karakter (ASCII '*'), karakter sayısı
     10, 14, 0x2A, 20,
 
@@ -93,7 +93,7 @@ const uint8_t  orta_numara[] PROGMEM = {
     //
 };
 
-const uint8_t  buyuk_numara[] PROGMEM = {
+const uint8_t buyuk_numara[] PROGMEM = {
 
     // Font başlığı: genişlik, yükseklik, ilk karakter (ASCII '*'), karakter sayısı
     12, 24, 0x2A, 21,

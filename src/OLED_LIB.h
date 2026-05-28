@@ -122,6 +122,9 @@ private: //_____________________________Ek sınıflar___________________________
     public:
         void paragraf_goruntuleyici(const char *metin, uint8_t azaltici, uint8_t arttirici, uint8_t max_ekran_satiri = 7);
         void paragraf_goruntuleyici(const String &metin, uint8_t azaltici, uint8_t arttirici, uint8_t max_ekran_satiri = 7);
+        void saat(byte saat_, byte dk_, byte x1=32, byte y1=30, byte r=30);
+        void progres_bar_yatay(byte x, byte y, byte w, byte h, byte lvl);
+        void progres_bar_dikey(byte x, byte y, byte w, byte h, byte lvl);
     };
     class mod
     {
